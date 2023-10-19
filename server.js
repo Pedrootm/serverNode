@@ -21,8 +21,8 @@ app.get('/search', async (req, res) => {
     }
 
     // Faz a solicitação para a página web com base no URL fornecido
-    const response = axios.get(`https://www.anitube.vip/busca.php?s=${keyword}&submit=Buscar`)
-
+    const response = await axios.get(`https://www.anitube.vip/busca.php?s=${keyword}&submit=Buscar`)
+console.log(response);
 
 .catch(function (error) {
     if (error.response) {
