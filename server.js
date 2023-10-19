@@ -20,7 +20,6 @@ app.get('/search', async (req, res) => {
       return res.status(400).send('Parâmetro "s" ausente na URL');
     }
 
-      const errorHandling = ()  => {
     // Faz a solicitação para a página web com base no URL fornecido
     const response = axios.get(`https://www.anitube.vip/busca.php?s=${keyword}&submit=Buscar`)
 
@@ -44,7 +43,7 @@ app.get('/search', async (req, res) => {
     console.log(error.config);
   });      
       
-   }     
+  
       
     // Carrega o conteúdo HTML da página
     const $ = cheerio.load(response.data);
