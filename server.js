@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const cors = require('cors'); // Importe o pacote CORS
 
 const app = express();
-const PORT = 3000;
+const PORT = 3333;
 
 app.use(cors()); // Habilite o CORS para todas as rotas
 
