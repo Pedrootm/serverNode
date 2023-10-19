@@ -28,7 +28,7 @@ console.log(response);
   
       
     // Carrega o conteúdo HTML da página
-    const $ = cheerio.load(response.data);
+    const $ = cheerio.load(response);
 
     // Encontra a div com a classe "list_itens" e obtém seu conteúdo
     const listItensContent = $('.lista_de_animes').html();
