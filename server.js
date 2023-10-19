@@ -23,8 +23,19 @@ app.get('/search', async (req, res) => {
     // Faz a solicitação para a página web com base no URL fornecido
     const response = await axios.get(`https://www.anitube.vip/busca.php?s=${keyword}&submit=Buscar`);
 
+      
+    // Carrega o conteúdo HTML da página
+    const $ = cheerio.load(response.data);
 
-
+    // Encontra a div com a classe "list_itens" e obtém seu conteúdo
+    const listItensContent = $('.lista_de_animes').html();
+   
+ // Envia o conteúdo da div como resposta
+    res.send(listItensContent);
+  } catch (error) {
+    res.status(500).send('Erro ao buscar a página web do anime.');
+  }
+});
 
 
 .catch(function (error) {
@@ -46,24 +57,6 @@ app.get('/search', async (req, res) => {
     console.log(error.config);
   });      
 
-
-
-
-
-
-      
-    // Carrega o conteúdo HTML da página
-    const $ = cheerio.load(response.data);
-
-    // Encontra a div com a classe "list_itens" e obtém seu conteúdo
-    const listItensContent = $('.lista_de_animes').html();
-   
- // Envia o conteúdo da div como resposta
-    res.send(listItensContent);
-  } catch (error) {
-    res.status(500).send('Erro ao buscar a página web do anime.');
-  }
-});
 
 
 app.get('/scrape', async (req, res) => {
