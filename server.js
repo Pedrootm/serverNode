@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const cors = require('cors'); // Importe o pacote CORS
 
 const app = express();
-const PORT = 3000;
+
 
 app.use(cors()); // Habilite o CORS para todas as rotas
 
@@ -120,8 +120,9 @@ app.get('/search2', async (req, res) => {
 });
 
 
-
-
-app.listen(PORT, () => {
-  console.log(`Servidor Node.js em execução em http://localhost:${PORT}`);
-});
+app.listen({
+  host: '0.0.0.0',
+  port: process.env.PORT ? Number(process.env.PORT) : 3333,
+}).then(() => {
+  console.log('HTTP Server Running')
+})
